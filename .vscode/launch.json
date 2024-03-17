@@ -1,0 +1,88 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+
+            // *********** train_*.py ***********
+            // "args": [
+            //     "--epochs", "100",
+            //     "--batch-size", "4",
+            //     "--learning-rate", "1e-6",
+            //     "--classes", "1",
+            //     "--channels", "2",
+            //     "--scale", "0.5",
+            //     "--bilinear",
+
+            //     "--load", "./data/checkpoints",
+            // ],
+
+            // *********** predict.py ***********
+            "args": [
+                "--model",
+                // "./data/unet.pth",                  // UNet
+                // "./data/res18unet-pre.pth",         // Resnet18_Unet
+                // "./data/CBAMres18unet-pre.pth",     // CBAMResnet18_Unet
+                // "./data/TAres18unet-pre.pth",       // TAResnet18_Unet
+                "./data/TAres18unet-pre-cml.pth",   // TAResnet18_Unet with cml
+
+                "--name",
+                // "UNet",
+                // "Resnet18_Unet",
+                // "CBAMResnet18_Unet",
+                "TAResnet18_Unet",
+
+                "--input_sar",
+                "data/demo/",
+                "--input_mask",
+                "data/demo/",
+                "--output",
+                "data/demo/output/",
+
+                // "--viz",
+                // "--no-save",
+                "--classes", "1",
+                "--channels", "2",
+                "--scale", "0.5",
+                "--bilinear",
+            ],
+
+            // *********** evaluate2.py ***********
+            // "args": [
+            //     "--model",
+            //     // "./data/unet.pth",                  // UNet
+            //     // "./data/res18unet-pre.pth",         // Resnet18_Unet
+            //     // "./data/CBAMres18unet-pre.pth",     // CBAMResnet18_Unet
+            //     // "./data/TAres18unet-pre.pth",       // TAResnet18_Unet
+            //     "./data/TAres18unet-pre-cml.pth",   // TAResnet18_Unet with cml
+
+            //     "--name",
+            //     // "UNet",
+            //     // "Resnet18_Unet",
+            //     // "CBAMResnet18_Unet",
+            //     "TAResnet18_Unet",
+
+            //     "--input_sar",
+            //     "data/dataset/trainval_imgs/",
+            //     "--input_mask",
+            //     "data/dataset/trainval_masks/",
+            //     "--output",
+            //     "./result_eval/out.csv",
+
+            //     "--classes", "1",
+            //     "--channels", "2",
+            //     "--scale", "0.5",
+            //     "--bilinear",
+            //     "--batch_size", "4",
+            // ],
+        }
+    ]
+}
